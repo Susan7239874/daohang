@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "daohang": "/components/daohang/daohang"
+  },
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "标题json要设置",
+  "backgroundTextStyle": "light",
+  "navigationStyle": "custom",
+  "disableScroll": true
+}

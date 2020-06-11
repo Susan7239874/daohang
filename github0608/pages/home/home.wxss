@@ -1,0 +1,4 @@
+/* pages/home.wxss */
+.homecontainer{
+    background-color: indianred;
+}

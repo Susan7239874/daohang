@@ -1,0 +1,5 @@
+<!--pages/first.wxml-->
+<view class="firstcontainer" style="height:{{containeHeight}}px">
+    <text>pages/first.wxml</text>
+</view>
+<tabbar tabBar="{{tabBar}}"></tabbar>

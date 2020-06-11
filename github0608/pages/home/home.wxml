@@ -1,0 +1,7 @@
+<!--pages/home.wxml-->
+<!--自定义导航栏 -s-->
+<daohang title="选择车型"></daohang>
+<!--自定义导航栏 -e-->
+<view class="homecontainer" style="height:{{wrapHeight}}px;">
+    <text>pages/home.wxml</text>
+</view>
