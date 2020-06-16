@@ -1,2 +1,5 @@
 <!--pages/mine.wxml-->
-<text>pages/mine.wxml</text>
+<view class="firstcontainer" style="height:{{containeHeight}}px">
+    <text>我的</text>
+</view>
+<tabbar tabBar="{{tabBar}}"></tabbar>

@@ -1,11 +1,12 @@
 // pages/mine.js
+var app=getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    containeHeight:app.globalData.tabBar.homeWrapHeight
   },
 
   /**
@@ -26,7 +27,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      tabBar:app.globalData.tabBar
+    })
   },
 
   /**

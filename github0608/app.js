@@ -33,16 +33,22 @@ App({
             }
         })
 
+        // 导航栏 -s
         this.getSystemInfo()
+        this.setTabBar()
+        // 导航栏 -e
     },
     globalData: {
         userInfo: null,
+        // 导航栏 -s
         headerBtnPosi: null,//获取胶囊的位置信息，宽、高、上下左右
         btnPosi: null,//修改过后的-胶囊的位置信息，宽、高、上下左右
         cusnavH: null,
         systeminfo: null,//获取系统信息  systeminfo.screenHeight=>完整屏幕高度
         navbarHeight: 0,//上面的导航栏高度
         wrapHeight: 0,//屏幕除导航栏外的高度
+        // 导航栏 -e
+        // 底部栏 -s
         tabBar: {//自定义底部栏的参数
             "borderStyle": "#ccc",
             "backgroundColor": "#ffffff",
@@ -54,7 +60,7 @@ App({
             "mate30":false,
             "list": [
                 {
-                    "pagePath": "/pages/home/home",
+                    "pagePath": "/pages/first/first",
                     "text": "首页",
                     "iconPath": "/images/icon-home.png",
                     "selectedIconPath": "/images/icon-homed.png",
@@ -74,7 +80,9 @@ App({
             ],
             "position": "bottom"
         },
+        // 底部栏 -e
     },
+    // 导航栏 -s
     getSystemInfo() {//获取右边胶囊的位置+获取系统信息
         let that = this;
 
@@ -104,23 +112,12 @@ App({
         console.log('this.globalData.navbarHeight:'+this.globalData.navbarHeight)
         console.log('this.globalData.wrapHeight:'+this.globalData.wrapHeight)
     },
-    editTabBar() {//自定义底部栏
-        var _curPageArr = getCurrentPages();
-        var _curPage = _curPageArr[_curPageArr.length - 1];
-        var _pagePath = _curPage.__route__;
-        if (_pagePath.indexOf('/') != 0) {
-            _pagePath = '/' + _pagePath;
-        }
+    // 导航栏 -e
+    // 底部栏 -s
+    setTabBar(){
         var tabBar = this.globalData.tabBar;
-        for (var i = 0; i < tabBar.list.length; i++) {
-            tabBar.list[i].active = false;
-            if (tabBar.list[i].pagePath == _pagePath) {
-                tabBar.list[i].active = true;//根据页面地址设置当前页面状态
-            }
-        }
-
         // 根据屏幕高度给适合的底部tabbar高度-s
-        let sheight = Number(this.globalData.screenHeight)
+        let sheight = Number(this.globalData.systeminfo.screenHeight)
         if (sheight>730&&sheight<740){
             tabBar.tabHeight = 53
         }else if (sheight>740&&sheight<900){
@@ -143,11 +140,6 @@ App({
             tabBar.paoYn=false
         }
         // 根据屏幕高度给适合的底部tabbar高度-e
-
-        _curPage.setData({
-            tabBar: tabBar
-        });
-
     },
     goPageTabbar:function(e){
         this.globalData.tabBar.paoYn=false//显示或隐藏前最先渲染让它隐藏，因为onshow才会重新渲染，不这样会比较突兀
@@ -156,9 +148,20 @@ App({
             this.globalData.tabBar.paoYn=false
             wx.setStorageSync('paoYes',true)
         }
+
+        // active切换 -s
+        var tabBar = this.globalData.tabBar;
+        for (var i = 0; i < tabBar.list.length; i++) {
+            tabBar.list[i].active = false;
+            if (tabBar.list[i].pagePath == e.currentTarget.dataset.url) {
+                tabBar.list[i].active = true;//根据页面地址设置当前页面状态
+            }
+        }
         console.log('this.globalData.tabBar:'+JSON.stringify(this.globalData.tabBar))
+        // active切换 -e
         wx.switchTab({
             url:e.currentTarget.dataset.url
         })
     },
+    // 底部栏 -e
 })
